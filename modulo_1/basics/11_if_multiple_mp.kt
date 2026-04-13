@@ -1,16 +1,20 @@
 fun main() {
   println("Controles de Flujo")
-  println("Condicional If - else")
-  println("Tiene beca estudiantil s/n: ")
-  val tieneBeca = readLine()?.trim()?.lowercase() == "s"
+  println("Condicional If - Multiples Condicionales")
+  println("Promedio del estudiante")
+  val promedio = readLine()?.toIntOrNull() ?: 0
   
-  println("Costo de matrícula: ")
-  val costoBase = readLine()?.toDoubleOrNull() ?: 0.0
-  
-  if (tieneBeca) {
-    val cobertura = costoBase * 0.80    
-    println("La beca cubre: $${"%.2f".format(cobertura)}")
+  val clasificacion = if (promedio < 7) {
+      "Reprobado"
+  } else if (promedio <= 8) {
+      "Aprobado"
+  } else if (promedio <= 9) {
+      "Muy Bueno"
+  } else if (promedio <= 10) {
+      "Excelente"
   } else {
-      println("Pago total del estudiante: $${"%.2f".format(costoBase)}")
+      "Promedio fuera de rango"
   }
+  
+  println("Clasificacion: $clasificacion")
 }
