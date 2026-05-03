@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "C:/Users/Nat/Desktop/Universidad/programacion_4_manana_navarrete/modulo2/tts/app/build/intermediates/cxx/Debug/n1s3l1o5/obj/x86/libtts.so"
+			"path" : "C:/Users/Usuario/Desktop/programacion_4_manana_macias/modulo_2/tts/app/build/intermediates/cxx/Debug/n1s3l1o5/obj/x86/libtts.so"
 		}
 	],
 	"backtrace" : 1,
@@ -58,7 +58,7 @@
 			],
 			"sysroot" : 
 			{
-				"path" : "C:/Users/Nat/AppData/Local/Android/Sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
+				"path" : "C:/Users/Usuario/AppData/Local/Android/Sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
 			}
 		}
 	],
@@ -89,7 +89,7 @@
 		"language" : "CXX",
 		"sysroot" : 
 		{
-			"path" : "C:/Users/Nat/AppData/Local/Android/Sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
+			"path" : "C:/Users/Usuario/AppData/Local/Android/Sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
 		}
 	},
 	"name" : "tts",
