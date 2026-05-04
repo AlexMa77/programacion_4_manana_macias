@@ -1,1 +1,0 @@
-C:\Users\Usuario\Desktop\programacion_4_manana_macias\modulo_2\tts\app\src\main\cpp\CMakeLists.txt

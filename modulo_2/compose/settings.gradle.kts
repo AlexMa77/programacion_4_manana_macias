@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "tts"
+rootProject.name = "Compose"
 include(":app")
  
