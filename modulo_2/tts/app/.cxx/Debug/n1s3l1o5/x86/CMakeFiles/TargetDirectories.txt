@@ -1,3 +1,0 @@
-C:/Users/Usuario/Desktop/programacion_4_manana_macias/modulo_2/tts/app/.cxx/Debug/n1s3l1o5/x86/CMakeFiles/tts.dir
-C:/Users/Usuario/Desktop/programacion_4_manana_macias/modulo_2/tts/app/.cxx/Debug/n1s3l1o5/x86/CMakeFiles/edit_cache.dir
-C:/Users/Usuario/Desktop/programacion_4_manana_macias/modulo_2/tts/app/.cxx/Debug/n1s3l1o5/x86/CMakeFiles/rebuild_cache.dir
