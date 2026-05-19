@@ -1,51 +1,44 @@
+// MainActivity.kt
 package com.ute.compose
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.ute.compose.ui.theme.ComposeTheme
+import androidx.compose.material3.MaterialTheme
+import com.ute.compose.ui.*
+import com.ute.compose.ui.material3.Paso01SumaScreen
+import com.ute.compose.ui.material3.Paso02CardScreen
+import com.ute.compose.ui.material3.Paso02CompraScreen
+import com.ute.compose.ui.material3.Paso03LazyColumnScreen
+import com.ute.compose.ui.material3.Paso04ScaffoldScreen
+import com.ute.compose.ui.material3.Paso05NavBarScreen
+import com.ute.compose.ui.material3.Paso06DialogosScreen
+//import com.ute.compose.ui.material3.Paso01TextFieldScreen
+import com.ute.compose.ui.screens.S02_TextScreen
+import com.ute.compose.ui.screens.S03ButtonScreen
+import com.ute.compose.ui.screens.S04LayoutScreen
+import com.ute.compose.ui.screens.S05ModifierScreen
+import com.ute.compose.ui.screens.S06EstadoScreen
+import com.ute.compose.ui.screens.S07stateHoistingScreen
+import com.ute.compose.ui.screens.S08BienvenidaScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
-            ComposeTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+            MaterialTheme {
+                // ◀ CAMBIA AQUÍ para probar cada paso:
+                //Paso01TextFieldScreen()
+                //Paso01SumaScreen()
+                //Paso02CompraScreen()
+                //Paso02CardScreen()
+               // Paso03LazyColumnScreen()
+                // Paso02_CardScreen()
+                // Paso03_LazyColumnScreen()
+                 //Paso04ScaffoldScreen()
+                // Paso05NavBarScreen()
+                Paso06DialogosScreen()   // ← paso activo
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier,
-        color = Color.Red,
-        fontSize = 30.dp,
-        fontWeight =  FontWeight.Bold,
-        textAlign = TextAlign.Center
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ComposeTheme {
-        Greeting("Android")
     }
 }
