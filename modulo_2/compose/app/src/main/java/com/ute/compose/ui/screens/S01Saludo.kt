@@ -1,5 +1,5 @@
 // ui/S01_Saludo.kt
-package com.ute.compose.ui.screens
+package com.ute.compose.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -8,12 +8,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-
-
-@Composable
-fun Saludo(nombre: String) {
-    Text(text = "Hola, $nombre!")
-}
 
 @Composable
 fun S01_SaludoScreen() {
@@ -30,12 +24,15 @@ fun S01_SaludoScreen() {
         Saludo("Ana")
         Saludo("Luis")
         Saludo("Kotlin")
-
         HorizontalDivider()
-
+        Suma(1,2)
         MensajeCondicional(mostrar = true)
         MensajeCondicional(mostrar = false)
     }
+}
+@Composable
+fun Saludo(nombre: String) {
+    Text(text = "Hola, $nombre!")
 }
 
 @Composable
@@ -48,9 +45,16 @@ private fun MensajeCondicional(mostrar: Boolean) {
             color = MaterialTheme.colorScheme.outline)
     }
 }
+@Composable
+fun Suma(a: Int,b: Int){
+    var suma = a + b
+    Text(text = "El resultado es $a + $b = $suma")
+
+}
 
 @Preview(showBackground = true)
 @Composable
 fun S01_Preview() {
     MaterialTheme { S01_SaludoScreen() }
 }
+
