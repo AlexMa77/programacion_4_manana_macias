@@ -11,6 +11,15 @@ void main() {
   final urls = endpoints.map((e) => 'https://api.ejemplo.com$e');
   print(urls.toList());
   // [https://api.ejemplo.com/usuarios, ...]
+
+  final temperaturas = [36.1, 37.8, 39.2, 36.5, 38.7, 35.9];
+
+  final conFiebre = temperaturas.where((t) => t > 37.5);
+  print(conFiebre.toList());  // [37.8, 39.2, 38.7]
+
+  final normales = temperaturas.where((t) => t >= 36.0 && t <= 37.5);
+  print(normales.toList());   // [36.1, 36.5]
+
   final ventas = [1500.0, 2300.0, 980.0, 3100.0, 750.0];
 
   // reduce — combina todos los elementos en uno

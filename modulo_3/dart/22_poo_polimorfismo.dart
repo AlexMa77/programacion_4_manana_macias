@@ -46,4 +46,3 @@ void main() {
   final mayor = figuras.reduce((a, b) => a.calcularArea() > b.calcularArea() ? a : b);
   print('\nFigura más grande: ${mayor.nombre}');
 }
-

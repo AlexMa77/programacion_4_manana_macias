@@ -1,5 +1,3 @@
-import 'dart:io';
-
 void main() {
   // while — comprueba la condición ANTES de ejecutar
   int paquetes = 0;
