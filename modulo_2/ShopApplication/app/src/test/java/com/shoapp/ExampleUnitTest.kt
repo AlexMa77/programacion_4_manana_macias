@@ -1,4 +1,4 @@
-package com.shopapp
+package com.shoapp
 
 import org.junit.Test
 
