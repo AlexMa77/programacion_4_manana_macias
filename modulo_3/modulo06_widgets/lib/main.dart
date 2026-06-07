@@ -1,5 +1,6 @@
 // lib/main.dart
 import 'package:flutter/material.dart';
+import 'package:modulo06_widgets/widgets/catalogo_basicos.dart';
 
 // ┌──────────────────────────────────────────────────────────────────┐
 // │  Cambia este número y guarda (Ctrl+S) para navegar entre pasos. │
@@ -12,19 +13,43 @@ import 'package:flutter/material.dart';
 // │  7  Paso 5   BuildContext                                        │
 // │  8  Paso 6   Composición de widgets                             │
 // └──────────────────────────────────────────────────────────────────┘
-const int paso = 1;
+const int paso = 2;
 
 void main() => runApp(MaterialApp(
   debugShowCheckedModeBanner: false,
+  theme: ThemeData(colorSchemeSeed: Colors.red),
   home: switch (paso) {
     1 => const Scaffold(body: Center(child: Saludo())),
+    2 => const CatalogoBasicos(),
     _ => Scaffold(body: Center(child: Text('Paso $paso: crea el widget primero'))),
   },
 ));
 
+
 class Saludo extends StatelessWidget {
   const Saludo({super.key});
+
   @override
-  Widget build(BuildContext context) =>
-      const Text('Hola Flutter', style: TextStyle(fontSize: 32));
+  Widget build(BuildContext context) {
+    // Describe cómo se ve
+    return const SelectableText(
+      'Aunque la NOAA detectó condiciones asociadas al fenómeno y modelos anti',
+      style: TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.bold,
+        letterSpacing: 4,
+        color: Color.fromARGB(255, 58, 154, 183),
+        shadows: [
+          Shadow(
+            color: Colors.black26,
+            blurRadius: 4,
+            offset: Offset(2, 2),
+          ),
+        ],
+      ), // TextStyle
+      textAlign: TextAlign.left,
+      //overflow: TextOverflow.ellipsis,
+      maxLines: 3,
+    ); // Text
+  }
 }
