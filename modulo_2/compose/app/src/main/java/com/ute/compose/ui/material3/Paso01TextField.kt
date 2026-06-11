@@ -1,7 +1,5 @@
 package com.ute.compose.ui.material3
 
-// ui/Paso01_TextField.kt
-
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
@@ -199,7 +197,7 @@ private fun DemoFormularioContacto() {
         )
 
         Button(
-            onClick  = {message="Informacion Guardada"},
+            onClick  = { message="Información Guardada" },
             enabled  = formularioValido,
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -211,6 +209,6 @@ private fun DemoFormularioContacto() {
 
 @Preview(showBackground = true)
 @Composable
-fun Paso01_Preview() {
+fun Paso01Preview() {
     MaterialTheme { Paso01TextFieldScreen() }
 }

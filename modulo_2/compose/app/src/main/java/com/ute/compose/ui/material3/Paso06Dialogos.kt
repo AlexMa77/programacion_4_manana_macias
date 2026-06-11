@@ -26,7 +26,7 @@ import com.ute.compose.model.contactosDeMuestra
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Paso06DialogosScreen() {
+fun Paso06_DialogosScreen() {
     var contactos        by remember { mutableStateOf(contactosDeMuestra) }
     var busqueda         by remember { mutableStateOf("") }
     var filtro           by remember { mutableStateOf("Todos") }
@@ -424,6 +424,6 @@ private fun DialogNuevoContacto(
 
 @Preview(showBackground = true)
 @Composable
-fun Paso06_Preview() {
-    MaterialTheme { Paso06DialogosScreen() }
+fun Paso06Preview() {
+    MaterialTheme { Paso06_DialogosScreen() }
 }
