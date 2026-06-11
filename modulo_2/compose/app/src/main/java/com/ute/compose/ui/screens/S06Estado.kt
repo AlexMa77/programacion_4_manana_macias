@@ -1,5 +1,6 @@
 package com.ute.compose.ui.screens
 
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -117,6 +118,6 @@ private fun DemoEstadoDerivado() {
 
 @Preview(showBackground = true)
 @Composable
-fun S06_Preview() {
+fun S06Preview() {
     MaterialTheme { S06EstadoScreen() }
 }
