@@ -18,6 +18,7 @@ import com.shopapp.presentation.ui.admin.orders.OrderAdminDetailScreen
 import com.shopapp.presentation.ui.admin.orders.OrdersAdminScreen
 import com.shopapp.presentation.ui.admin.products.ProductsAdminScreen
 import com.shopapp.presentation.ui.admin.users.UsersAdminScreen
+import com.shopapp.presentation.ui.admin.users.SendNotificationScreen
 import com.shopapp.presentation.ui.auth.LoginScreen
 import com.shopapp.presentation.ui.auth.RegisterScreen
 import com.shopapp.presentation.ui.auth.ForgotPasswordScreen
@@ -225,6 +226,9 @@ fun NavGraph(
                             navController.navigate(Screen.Login.route) {
                                 popUpTo(0) { inclusive = true }
                             }
+                        },
+                        onSendNotification = {
+                            navController.navigate(Screen.SendNotification.route)
                         },
                     )
                 }
@@ -437,6 +441,19 @@ fun NavGraph(
                         UsersAdminScreen()
                     }
                 }
+            }
+
+            // ── ADMIN SEND NOTIFICATION ────────────
+            composable(Screen.SendNotification.route) {
+                if (!isStaff) {
+                    LaunchedEffect(Unit) {
+                        navController.navigate(Screen.Home.route) { popUpTo(0) }
+                    }
+                    return@composable
+                }
+                SendNotificationScreen(
+                    onBack = { navController.popBackStack() }
+                )
             }
         }
     }
