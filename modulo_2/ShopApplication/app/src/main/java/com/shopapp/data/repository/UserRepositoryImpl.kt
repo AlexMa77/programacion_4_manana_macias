@@ -13,6 +13,8 @@ import com.shopapp.domain.repository.UserRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
+// El error suele ser que falta el import de tu función de extensión personalizada para el Uri, por ejemplo:
+// import com.shopapp.data.util.toMultipart
 
 @Singleton
 class UserRepositoryImpl @Inject constructor(
