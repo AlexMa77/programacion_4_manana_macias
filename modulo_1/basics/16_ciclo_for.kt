@@ -58,7 +58,7 @@ fun main() {
   
   val pacientes = listOf(
     Triple("Garcia, M", 37.2, 98),
-    Triple("Zambrano, L", 39.1, 94),
+    Triple("Macias, L", 39.1, 94),
     Triple("Torres, R", 40.3, 91),
   )
   for((posicion,paciente) in pacientes.withIndex()){
