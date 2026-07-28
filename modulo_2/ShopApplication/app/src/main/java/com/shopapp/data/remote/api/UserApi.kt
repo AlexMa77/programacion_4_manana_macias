@@ -39,21 +39,19 @@ interface UserApi {
     @GET("users/stats/")
     suspend fun getStats(): Response<UserStatsDto>
 
+    @POST("auth/password-reset/")
+    suspend fun requestPasswordReset(
+        @Body body: PasswordResetRequestDto,
+    ): Response<MessageDto>
+
+    @POST("auth/password-reset/confirm/")
+    suspend fun confirmPasswordReset(
+        @Body body: PasswordResetConfirmDto,
+    ): Response<MessageDto>
+
     @Multipart
     @PATCH("users/profile/")
     suspend fun uploadAvatar(
         @Part avatar: MultipartBody.Part,
     ): Response<UserDto>
-
-    // ── Notificaciones de staff ───────────────────────────────────────────────
-
-    /**
-     * Envía un correo personalizado o masivo.
-     * Requiere is_staff = true en el backend (IsAdminUser → 403 si no es staff).
-     * Backend: POST /api/emails/send/
-     */
-    @POST("emails/send/")
-    suspend fun sendNotification(
-        @Body body: SendNotificationDto,
-    ): Response<NotificationResultDto>
 }

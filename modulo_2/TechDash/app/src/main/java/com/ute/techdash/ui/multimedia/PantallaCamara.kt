@@ -31,6 +31,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -43,7 +44,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
-import androidx.core.content.FileProvider
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import java.io.File
 import java.text.SimpleDateFormat
@@ -63,29 +63,30 @@ fun PantallaCamara(
     var flashActivo   by remember { mutableStateOf(false) }
     var tomandoFoto   by remember { mutableStateOf(false) }
 
-    // Función para inicializar CameraX
-    fun iniciarCamara(vistaPrevia: PreviewView) {
+    // Reutilizamos la misma vista previa para evitar inflar vistas repetidamente
+    val vistaPreviaView = remember {
+        PreviewView(context).apply {
+            scaleType = PreviewView.ScaleType.FILL_CENTER
+        }
+    }
+
+    // LaunchedEffect: Reinicia la cámara SOLO si cambia la lente (frontal/trasera)
+    LaunchedEffect(usarCamaraFrontal) {
         val proveedorFuturo = ProcessCameraProvider.getInstance(context)
         proveedorFuturo.addListener({
             val proveedor = proveedorFuturo.get()
 
-            // Selector de cámara
             val selectorCamara = if (usarCamaraFrontal)
                 CameraSelector.DEFAULT_FRONT_CAMERA
             else
                 CameraSelector.DEFAULT_BACK_CAMERA
 
-            // Preview — lo que ve el usuario en pantalla
             val preview = Preview.Builder().build().also {
-                it.surfaceProvider = vistaPrevia.surfaceProvider
+                it.surfaceProvider = vistaPreviaView.surfaceProvider
             }
 
-            // ImageCapture — para tomar la foto
             val imageCapture = ImageCapture.Builder()
-                .setFlashMode(
-                    if (flashActivo) ImageCapture.FLASH_MODE_ON
-                    else             ImageCapture.FLASH_MODE_OFF
-                )
+                .setFlashMode(if (flashActivo) ImageCapture.FLASH_MODE_ON else ImageCapture.FLASH_MODE_OFF)
                 .setCaptureMode(ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY)
                 .build()
 
@@ -105,12 +106,16 @@ fun PantallaCamara(
         }, ContextCompat.getMainExecutor(context))
     }
 
+    // Cambiar el modo de flash de forma dinámica sin desvincular la cámara
+    LaunchedEffect(flashActivo) {
+        capturaImagen?.flashMode = if (flashActivo) ImageCapture.FLASH_MODE_ON else ImageCapture.FLASH_MODE_OFF
+    }
+
     // Función para tomar la foto
     fun tomarFoto() {
         val captura = capturaImagen ?: return
         tomandoFoto = true
 
-        // Crear archivo de destino en caché
         val archivo = File(
             context.cacheDir.resolve("images").also { it.mkdirs() },
             SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(System.currentTimeMillis()) + ".jpg"
@@ -141,15 +146,9 @@ fun PantallaCamara(
 
     Box(modifier = Modifier.fillMaxSize().background(Color.Black)) {
 
-        // Vista previa de la cámara — AndroidView para componentes de Android clásico
+        // Vista previa de la cámara encapsulada correctamente
         AndroidView(
-            factory  = { ctx ->
-                PreviewView(ctx).also { vistaPrevia ->
-                    vistaPrevia.scaleType = PreviewView.ScaleType.FILL_CENTER
-                    iniciarCamara(vistaPrevia)
-                }
-            },
-            update   = { vistaPrevia -> iniciarCamara(vistaPrevia) },
+            factory  = { vistaPreviaView },
             modifier = Modifier.fillMaxSize()
         )
 

@@ -1,3 +1,4 @@
+// presentation/ui/auth/ResetPasswordConfirmScreen.kt
 package com.shopapp.presentation.ui.auth
 
 import androidx.compose.foundation.layout.*
@@ -132,14 +133,14 @@ fun ResetPasswordConfirmScreen(
                 singleLine           = true,
                 enabled              = !state.isLoading,
                 visualTransformation = if (showPass) VisualTransformation.None
-                                       else PasswordVisualTransformation(),
+                else PasswordVisualTransformation(),
                 trailingIcon = {
                     IconButton(onClick = { showPass = !showPass }) {
                         Icon(
                             imageVector        = if (showPass) Icons.Default.VisibilityOff
-                                                else Icons.Default.Visibility,
+                            else Icons.Default.Visibility,
                             contentDescription = if (showPass) "Ocultar contraseña"
-                                                else "Mostrar contraseña",
+                            else "Mostrar contraseña",
                         )
                     }
                 },
@@ -162,7 +163,7 @@ fun ResetPasswordConfirmScreen(
                 singleLine           = true,
                 enabled              = !state.isLoading,
                 visualTransformation = if (showPass) VisualTransformation.None
-                                       else PasswordVisualTransformation(),
+                else PasswordVisualTransformation(),
                 isError              = passwordMismatch,
                 supportingText       = {
                     if (passwordMismatch) Text("Las contraseñas no coinciden")
@@ -177,7 +178,7 @@ fun ResetPasswordConfirmScreen(
             Spacer(Modifier.height(24.dp))
 
             val isFormValid = uid.isNotBlank() && token.isNotBlank()
-                && newPassword.isNotBlank() && newPassword == newPassword2
+                    && newPassword.isNotBlank() && newPassword == newPassword2
 
             Button(
                 onClick  = {

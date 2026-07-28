@@ -1,8 +1,9 @@
+// presentation/viewmodel/ForgotPasswordViewModel.kt
 package com.shopapp.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.shopapp.domain.repository.AuthRepository
+import com.shopapp.domain.repository.PasswordResetRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -16,7 +17,7 @@ data class ForgotPasswordUiState(
 
 @HiltViewModel
 class ForgotPasswordViewModel @Inject constructor(
-    private val repository: AuthRepository,
+    private val repository: PasswordResetRepository,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(ForgotPasswordUiState())

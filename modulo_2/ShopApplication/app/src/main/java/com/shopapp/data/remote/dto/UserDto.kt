@@ -9,11 +9,11 @@ data class UserDto(
     val id:         Int,
     val username:   String,
     val email:      String,
-    @SerializedName("first_name")  val firstName:  String? = null,
-    @SerializedName("last_name")   val lastName:   String? = null,
+    @SerializedName("first_name")  val firstName:  String,
+    @SerializedName("last_name")   val lastName:   String,
     @SerializedName("is_staff")    val isStaff:    Boolean,
     @SerializedName("is_active")   val isActive:   Boolean,
-    @SerializedName("date_joined") val dateJoined: String? = null,
+    @SerializedName("date_joined") val dateJoined: String,
     @SerializedName("num_orders")  val numOrders:  Int,
     @SerializedName("avatar_url")  val avatarUrl:  String? = null,
 )
@@ -46,11 +46,11 @@ fun UserDto.toDomain() = User(
     id         = id,
     username   = username,
     email      = email,
-    firstName  = firstName ?: "",
-    lastName   = lastName ?: "",
+    firstName  = firstName,
+    lastName   = lastName,
     isStaff    = isStaff,
     isActive   = isActive,
-    dateJoined = dateJoined ?: "",
+    dateJoined = dateJoined,
     numOrders  = numOrders,
     avatarUrl   = avatarUrl,
 )
@@ -63,20 +63,4 @@ fun UserPayload.toRequest() = UserRequestDto(
     isStaff   = isStaff,
     isActive  = isActive,
     password  = password,
-)
-
-/** Cuerpo del POST /api/emails/send/ */
-data class SendNotificationDto(
-    @SerializedName("subject") val subject: String,
-    @SerializedName("message") val message: String,
-    @SerializedName("user_id") val userId:  Int? = null,  // null → envío masivo
-)
-
-/**
- * Respuesta { "detail": "Correo enviado a N usuario(s).", "sent": N, "failed": M }
- */
-data class NotificationResultDto(
-    @SerializedName("detail") val detail: String,
-    @SerializedName("sent")   val sent:   Int,
-    @SerializedName("failed") val failed: Int,
 )
