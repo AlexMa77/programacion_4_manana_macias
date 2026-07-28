@@ -1,4 +1,4 @@
-﻿// lib/main.dart
+// lib/main.dart
 import 'package:flutter/material.dart';
 import 'widgets/tarjeta_log.dart';
 import 'widgets/fila_estado.dart';
@@ -24,23 +24,23 @@ void main() => runApp(MaterialApp(
         children: [
           TarjetaLog(
               nivel: 'ERROR',
-              componente: 'auth-service',
-              mensaje: 'Token expirado â€” usuario forzado a re-login',
+              componente: 'admisiones',
+              mensaje: 'Formulario de admisión incompleto – revisar datos del aspirante',
               timestamp: DateTime.now()),
           TarjetaLog(
               nivel: 'WARN',
-              componente: 'db-pool',
-              mensaje: 'Conexiones disponibles: 2 / 10',
+              componente: 'becas',
+              mensaje: 'Cupos de beca disponibles: 2 / 10',
               timestamp: DateTime.now().subtract(const Duration(minutes: 2))),
           TarjetaLog(
               nivel: 'INFO',
-              componente: 'scheduler',
-              mensaje: 'Tarea de backup completada',
+              componente: 'matrícula',
+              mensaje: 'Proceso de matrícula completado exitosamente',
               timestamp: DateTime.now().subtract(const Duration(minutes: 5))),
           TarjetaLog(
               nivel: 'DEBUG',
-              componente: 'http-client',
-              mensaje: 'GET /api/status â†’ 200 OK (38ms)',
+              componente: 'sistema',
+              mensaje: 'GET /api/aspirantes → 200 OK (38ms)',
               timestamp: DateTime.now().subtract(const Duration(minutes: 8))),
         ],
       ),
@@ -48,14 +48,14 @@ void main() => runApp(MaterialApp(
     3 => const Scaffold(
       body: Column(
         children: [
-          FilaEstado(nombre: 'nginx-proxy',   detalle: '10.4.3.2  Â· 45ms',          activo: true),
+          FilaEstado(nombre: 'Juan Pérez',    detalle: 'Cód: 2024-001 · Activo',        activo: true),
           Divider(height: 1),
-          FilaEstado(nombre: 'db-primary',    detalle: '10.0.0.12 Â· 8ms',           activo: true),
+          FilaEstado(nombre: 'María Gómez',   detalle: 'Cód: 2024-002 · Activo',        activo: true),
           Divider(height: 1),
-          FilaEstado(nombre: 'backup-worker', detalle: '10.0.0.30 Â· sin respuesta', activo: false),
+          FilaEstado(nombre: 'Carlos López',  detalle: 'Cód: 2024-003 · Baja temporal',  activo: false),
           Divider(height: 1),
-          FilaEstado(nombre: 'api-gateway-produccion-region-us-east',
-                     detalle: '10.0.0.8 Â· 12ms', activo: true),
+          FilaEstado(nombre: 'Sofía Vega',
+                     detalle: 'Cód: 2024-004 · Activo', activo: true),
         ],
       ),
     ),
@@ -64,13 +64,13 @@ void main() => runApp(MaterialApp(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AvatarBadge(nombre: 'web-01', alertas: 2,  activo: true),
+            AvatarBadge(nombre: 'Juan P.', alertas: 2,  activo: true),
             SizedBox(width: 24),
-            AvatarBadge(nombre: 'db-01',  alertas: 0,  activo: true),
+            AvatarBadge(nombre: 'María G.', alertas: 0,  activo: true),
             SizedBox(width: 24),
-            AvatarBadge(nombre: 'worker', alertas: 0,  activo: false),
+            AvatarBadge(nombre: 'Carlos L.', alertas: 0,  activo: false),
             SizedBox(width: 24),
-            AvatarBadge(nombre: 'cache',  alertas: 11, activo: true),
+            AvatarBadge(nombre: 'Sofía V.', alertas: 11, activo: true),
           ],
         ),
       ),
@@ -98,7 +98,7 @@ Widget _paso1() => Scaffold(
           ),
         ],
       ),
-      child: const Text('Aspirante web-01',
+      child: const Text('Aspirante: Juan Pérez',
           style: TextStyle(fontWeight: FontWeight.bold)),
     ),
   ),

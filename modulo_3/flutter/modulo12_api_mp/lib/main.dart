@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:modulo12_api_mp/pantalla_paso1.dart';
@@ -93,7 +93,7 @@ class PantallaMenu extends StatelessWidget {
         ruta: '/paso1',
         titulo: 'Paso 1',
         subtitulo: 'FutureBuilder crudo',
-        detalle: 'http.get() + FutureBuilder Â· JSONPlaceholder',
+        detalle: 'http.get() + FutureBuilder · JSONPlaceholder',
         icono: Icons.network_ping,
         color: Colors.blue,
       ),
@@ -101,7 +101,7 @@ class PantallaMenu extends StatelessWidget {
         ruta: '/paso1users',
         titulo: 'Paso 1 Users',
         subtitulo: 'Mostrar usuarios',
-        detalle: 'http.get() + FutureBuilder Â· JSONPlaceholder',
+        detalle: 'http.get() + FutureBuilder · JSONPlaceholder',
         icono: Icons.network_ping,
         color: Color.fromARGB(255, 255, 143, 158),
       ),
@@ -109,7 +109,7 @@ class PantallaMenu extends StatelessWidget {
         ruta: '/paso2',
         titulo: 'Paso 2',
         subtitulo: 'DTO simple',
-        detalle: 'TodoDto.fromJson Â· lista de tareas',
+        detalle: 'TodoDto.fromJson · lista de aspirantes',
         icono: Icons.data_object,
         color: Colors.green,
       ),
@@ -117,7 +117,7 @@ class PantallaMenu extends StatelessWidget {
         ruta: '/paso2users',
         titulo: 'Paso 2 Users',
         subtitulo: 'Mostrar usuarios',
-        detalle: 'UserDto.fromJson Â· lista de usuarios',
+        detalle: 'UserDto.fromJson · lista de usuarios',
         icono: Icons.data_object,
         color: Color.fromARGB(255, 241, 204, 134),
       ),
@@ -125,7 +125,7 @@ class PantallaMenu extends StatelessWidget {
         ruta: '/paso3',
         titulo: 'Paso 3',
         subtitulo: 'API real + modelo de dominio',
-        detalle: 'ProductoDto Â· toDomain() Â· API Platzi',
+        detalle: 'ProductoDto · toDomain() · API Platzi',
         icono: Icons.shopping_bag,
         color: Colors.orange,
       ),
@@ -133,7 +133,7 @@ class PantallaMenu extends StatelessWidget {
         ruta: '/paso4',
         titulo: 'Paso 4',
         subtitulo: 'Errores tipados',
-        detalle: 'sealed ApiError Â· Result<T>',
+        detalle: 'sealed ApiError · Result<T>',
         icono: Icons.error_outline,
         color: Colors.red,
       ),
@@ -141,7 +141,7 @@ class PantallaMenu extends StatelessWidget {
         ruta: '/paso5',
         titulo: 'Paso 5',
         subtitulo: 'Arquitectura completa',
-        detalle: 'HttpClient Â· Repository Â· Riverpod Notifier',
+        detalle: 'HttpClient · Repository · Riverpod Notifier',
         icono: Icons.architecture,
         color: Colors.purple,
       ),
@@ -149,7 +149,7 @@ class PantallaMenu extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('MÃ³dulo 12 â€” API REST'),
+        title: const Text('Módulo 12 – API REST'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: ListView.separated(

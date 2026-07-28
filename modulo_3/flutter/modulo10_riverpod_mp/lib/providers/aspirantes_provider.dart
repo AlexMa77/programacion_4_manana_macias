@@ -1,4 +1,4 @@
-﻿// lib/providers/aspirantes_provider.dart
+// lib/providers/aspirantes_provider.dart
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart' show StateProvider;
 import '../models/solicitud_admision.dart';
@@ -9,8 +9,8 @@ class AspirantesNotifier extends Notifier<List<SolicitudAdmision>> {
   List<SolicitudAdmision> build() => [
     SolicitudAdmision(id:'1', nombre:'Juan Perez', documento:'0923456781', edad:22,   beca:true,  favorito:true),
     SolicitudAdmision(id:'2', nombre:'Maria Gomez',  documento:'0934567812', edad:22,   beca:true),
-    SolicitudAdmision(id:'3', nombre:'Carlos Lopez', documento:'0945678123', edad:2222, beca:false),
-    SolicitudAdmision(id:'4', nombre:'dev-deb-api',  documento:'10.0.4.10', edad:2222, beca:false)
+    SolicitudAdmision(id:'3', nombre:'Carlos Lopez', documento:'0945678123', edad:21, beca:false),
+    SolicitudAdmision(id:'4', nombre:'Sofia Vega',   documento:'0956789234', edad:19,   beca:false)
   ];
 
   void toggleFavorito(String id) {

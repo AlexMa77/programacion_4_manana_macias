@@ -47,7 +47,7 @@ class CustomizedSizedBox extends StatelessWidget {
           Wrap(
             spacing:    8,
             runSpacing: 8,
-            children: ['nginx', 'TLS 1.3', 'HTTP/2', 'IPv6', 'Load Balancer', 'CDN', 'WAF']
+            children: ['Matemáticas', 'Física', 'Química', 'Lenguaje', 'Inglés', 'Historia', 'Computación']
                 .map((t) => Chip(label: Text(t)))
                 .toList(),
           ),
