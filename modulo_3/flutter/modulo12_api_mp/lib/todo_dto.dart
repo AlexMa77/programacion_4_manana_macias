@@ -1,4 +1,4 @@
-class TodoDto {
+﻿class TodoDto {
   final int id;
   final String title;
   final bool completed;

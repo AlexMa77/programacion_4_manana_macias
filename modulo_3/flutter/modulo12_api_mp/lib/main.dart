@@ -28,14 +28,14 @@ class PantallaTemporal extends StatelessWidget {
           const Icon(Icons.hourglass_empty, size: 64, color: Colors.grey),
           const SizedBox(height: 16),
           Text(
-            '$titulo\nPrÃ³ximamenteâ€¦',
+            '$titulo\nPróximamente…',
             textAlign: TextAlign.center,
             style: const TextStyle(fontSize: 20, color: Colors.grey),
           ),
           const SizedBox(height: 32),
           ElevatedButton.icon(
             icon: const Icon(Icons.arrow_back),
-            label: const Text('Volver al menÃº'),
+            label: const Text('Volver al menú'),
             onPressed: () => context.go('/'),
           ),
         ],
@@ -59,10 +59,10 @@ final _router = GoRouter(
     GoRoute(path: '/paso3', builder: (_, __) => const PantallaPaso3()),
 
     // Paso 4 â†’ reemplaza por PantallaPaso4()
-    GoRoute(path: '/paso4', builder: (_, __) => const PantallaTemporal(titulo: 'Paso 4 Â· Errores tipados')),
+    GoRoute(path: '/paso4', builder: (_, __) => const PantallaTemporal(titulo: 'Paso 4 · Errores tipados')),
 
     // Paso 5 â†’ reemplaza por PantallaPaso5()
-    GoRoute(path: '/paso5', builder: (_, __) => const PantallaTemporal(titulo: 'Paso 5 Â· Arquitectura completa')),
+    GoRoute(path: '/paso5', builder: (_, __) => const PantallaTemporal(titulo: 'Paso 5 · Arquitectura completa')),
   ],
 );
 
@@ -168,7 +168,7 @@ class PantallaMenu extends StatelessWidget {
                 child: Icon(p.icono, color: Colors.white),
               ),
               title: Text(
-                '${p.titulo} Â· ${p.subtitulo}',
+                '${p.titulo} · ${p.subtitulo}',
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               subtitle: Padding(

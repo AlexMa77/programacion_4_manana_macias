@@ -1,4 +1,4 @@
-class Producto {
+﻿class Producto {
   final int     id;
   final String  nombre;
   final double  precio;
