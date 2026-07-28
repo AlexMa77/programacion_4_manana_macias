@@ -59,7 +59,8 @@ fun S05ModifierScreen() {
                 .background(Color(0xFFFFCDD2))    // 1° pinta (sin recorte aún)
                 .clip(RoundedCornerShape(16.dp))  // 2° recorta — tarde para el fondo
                 .padding(12.dp)
-                .clickable { ultimoClick = "Click en Background \nantes de \nclick" },
+                .clickable { ultimoClick = "Click en background\nantes de\nclip ❌" },
+
             contentAlignment = Alignment.Center
         ) {
             Text("background\nantes de\nclip ❌",
@@ -105,6 +106,6 @@ fun S05ModifierScreen() {
 
 @Preview(showBackground = true)
 @Composable
-fun S05_Preview() {
+fun S05Preview() {
     MaterialTheme { S05ModifierScreen() }
 }

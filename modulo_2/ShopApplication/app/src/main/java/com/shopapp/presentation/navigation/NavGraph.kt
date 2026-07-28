@@ -17,8 +17,12 @@ import com.shopapp.presentation.ui.admin.dashboard.DashboardScreen
 import com.shopapp.presentation.ui.admin.orders.OrderAdminDetailScreen
 import com.shopapp.presentation.ui.admin.orders.OrdersAdminScreen
 import com.shopapp.presentation.ui.admin.products.ProductsAdminScreen
+import com.shopapp.presentation.ui.admin.users.UsersAdminScreen
+import com.shopapp.presentation.ui.admin.users.SendNotificationScreen
 import com.shopapp.presentation.ui.auth.LoginScreen
 import com.shopapp.presentation.ui.auth.RegisterScreen
+import com.shopapp.presentation.ui.auth.ForgotPasswordScreen
+import com.shopapp.presentation.ui.auth.ResetPasswordConfirmScreen
 import com.shopapp.presentation.ui.client.orders.OrderDetailScreen
 import com.shopapp.presentation.ui.client.orders.OrdersScreen
 import com.shopapp.presentation.ui.client.profile.ProfileScreen
@@ -81,6 +85,7 @@ fun NavGraph(
         },
     ) { innerPadding ->
 
+        // ── BottomSheet carrito
         if (showCart) {
             CartBottomSheet(
                 cartViewModel   = cartViewModel,
@@ -103,6 +108,7 @@ fun NavGraph(
             modifier         = Modifier.padding(innerPadding),
         ) {
 
+            // ── LOGIN ───────────────────────────────
             composable(Screen.Login.route) {
                 LoginScreen(
                     onLoginSuccess = { staff ->
@@ -112,10 +118,31 @@ fun NavGraph(
                         }
                     },
                     onNavigateToRegister = { navController.navigate(Screen.Register.route) },
+                    onForgotPassword     = { navController.navigate(Screen.ForgotPassword.route) },
                     viewModel            = authViewModel,
                 )
             }
 
+            // ── Recuperación de contraseña ───────────────────────────────────────────────
+            composable(Screen.ForgotPassword.route) {
+                ForgotPasswordScreen(
+                    onBack        = { navController.popBackStack() },
+                    onGoToConfirm = { navController.navigate(Screen.ResetPasswordConfirm.route) },
+                )
+            }
+
+            composable(Screen.ResetPasswordConfirm.route) {
+                ResetPasswordConfirmScreen(
+                    onBack         = { navController.popBackStack() },
+                    onResetSuccess = {
+                        navController.navigate(Screen.Login.route) {
+                            popUpTo(Screen.Login.route) { inclusive = true }
+                        }
+                    },
+                )
+            }
+
+            // ── REGISTER ────────────────────────────
             composable(Screen.Register.route) {
                 RegisterScreen(
                     onRegisterSuccess = { staff ->
@@ -129,6 +156,7 @@ fun NavGraph(
                 )
             }
 
+            // ── HOME ───────────────────────────────
             composable(Screen.Home.route) {
                 HomeScreen(
                     onProductClick = { id -> navController.navigate("product/$id") },
@@ -136,12 +164,14 @@ fun NavGraph(
                 )
             }
 
+            // ── CATALOGO ───────────────────────────
             composable(Screen.Catalog.route) {
                 CatalogScreen(
                     onProductClick = { id -> navController.navigate("product/$id") },
                 )
             }
 
+            // ── DETALLE PRODUCTO ───────────────────
             composable(
                 route     = "product/{id}",
                 arguments = listOf(navArgument("id") { type = NavType.IntType }),
@@ -154,6 +184,7 @@ fun NavGraph(
                 )
             }
 
+            // ── ORDERS CLIENT ──────────────────────
             composable(Screen.Orders.route) {
                 if (!isAuthenticated) {
                     LaunchedEffect(Unit) {
@@ -168,6 +199,7 @@ fun NavGraph(
                 }
             }
 
+            // ── ORDER DETAIL CLIENT ────────────────
             composable(
                 route     = "orders/{id}",
                 arguments = listOf(navArgument("id") { type = NavType.IntType }),
@@ -179,6 +211,7 @@ fun NavGraph(
                 )
             }
 
+            // ── PROFILE ────────────────────────────
             composable(Screen.Profile.route) {
                 if (!isAuthenticated) {
                     LaunchedEffect(Unit) {
@@ -188,16 +221,20 @@ fun NavGraph(
                     }
                 } else {
                     ProfileScreen(
-                        authViewModel = authViewModel,
                         onLogout = {
+                            authViewModel.logout()
                             navController.navigate(Screen.Login.route) {
                                 popUpTo(0) { inclusive = true }
                             }
+                        },
+                        onSendNotification = {
+                            navController.navigate(Screen.SendNotification.route)
                         },
                     )
                 }
             }
 
+            // ── ADMIN DASHBOARD ────────────────────
             composable(Screen.AdminDashboard.route) {
                 if (!isStaff) {
                     LaunchedEffect(Unit) {
@@ -232,6 +269,7 @@ fun NavGraph(
                 }
             }
 
+            // ── ADMIN CATEGORIES ───────────────────
             composable("admin/categories") {
                 if (!isStaff) {
                     LaunchedEffect(Unit) {
@@ -261,6 +299,7 @@ fun NavGraph(
                 }
             }
 
+            // ── ADMIN PRODUCTS ─────────────────────
             composable("admin/products") {
                 if (!isStaff) {
                     LaunchedEffect(Unit) {
@@ -290,6 +329,7 @@ fun NavGraph(
                 }
             }
 
+            // ── ADMIN ORDERS ───────────────────────
             composable("admin/orders") {
                 if (!isStaff) {
                     LaunchedEffect(Unit) {
@@ -326,6 +366,7 @@ fun NavGraph(
                 }
             }
 
+            // ── ADMIN ORDER DETAIL ─────────────────
             composable(
                 route     = "admin/orders/{id}",
                 arguments = listOf(navArgument("id") { type = NavType.IntType }),
@@ -372,6 +413,7 @@ fun NavGraph(
                 }
             }
 
+            // ── ADMIN USERS (CORREGIDO) ────────────
             composable("admin/users") {
                 if (!isStaff) {
                     LaunchedEffect(Unit) {
@@ -384,8 +426,8 @@ fun NavGraph(
                     currentRoute = "admin/users",
                     user         = currentUser,
                     title        = "Usuarios",
-                    onNavClick   = { r ->
-                        navController.navigate(r) { launchSingleTop = true }
+                    onNavClick   = { route ->
+                        navController.navigate(route) { launchSingleTop = true }
                     },
                     onStoreClick = { navController.navigate(Screen.Home.route) },
                     onLogout     = {
@@ -395,16 +437,25 @@ fun NavGraph(
                         }
                     },
                 ) { padding ->
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(padding),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Text("Usuarios — próximo módulo", color = TextSecondary)
+                    Box(modifier = Modifier.padding(padding)) {
+                        UsersAdminScreen()
                     }
                 }
+            }
+
+            // ── ADMIN SEND NOTIFICATION ────────────
+            composable(Screen.SendNotification.route) {
+                if (!isStaff) {
+                    LaunchedEffect(Unit) {
+                        navController.navigate(Screen.Home.route) { popUpTo(0) }
+                    }
+                    return@composable
+                }
+                SendNotificationScreen(
+                    onBack = { navController.popBackStack() }
+                )
             }
         }
     }
 }
+

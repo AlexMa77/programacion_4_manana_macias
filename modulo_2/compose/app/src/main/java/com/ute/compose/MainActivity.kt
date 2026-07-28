@@ -5,39 +5,33 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.MaterialTheme
-import com.ute.compose.ui.*
-import com.ute.compose.ui.material3.Paso01SumaScreen
-import com.ute.compose.ui.material3.Paso02CardScreen
-import com.ute.compose.ui.material3.Paso02CompraScreen
-import com.ute.compose.ui.material3.Paso03LazyColumnScreen
-import com.ute.compose.ui.material3.Paso04ScaffoldScreen
-import com.ute.compose.ui.material3.Paso05NavBarScreen
-import com.ute.compose.ui.material3.Paso06DialogosScreen
-//import com.ute.compose.ui.material3.Paso01TextFieldScreen
-import com.ute.compose.ui.screens.S02_TextScreen
-import com.ute.compose.ui.screens.S03ButtonScreen
-import com.ute.compose.ui.screens.S04LayoutScreen
-import com.ute.compose.ui.screens.S05ModifierScreen
-import com.ute.compose.ui.screens.S06EstadoScreen
-import com.ute.compose.ui.screens.S07stateHoistingScreen
-import com.ute.compose.ui.screens.S08BienvenidaScreen
+import com.ute.compose.ui.screens.*
+import com.ute.compose.ui.material3.*
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MaterialTheme {
-                // ◀ CAMBIA AQUÍ para probar cada paso:
+                // Componentes Basicos Nativos:
+                // S01_SaludoScreen()
+                // S02_TextScreen()
+                //S03ButtonScreen()
+                // S04LayoutScreen()
+                //S05ModifierScreen()
+                // S06EstadoScreen()
+                // S07StateHoistingScreen()
+                //S08BienvenidaScreen()
+
+                // Componentes Material 3:
                 //Paso01TextFieldScreen()
-                //Paso01SumaScreen()
-                //Paso02CompraScreen()
-                //Paso02CardScreen()
-               // Paso03LazyColumnScreen()
-                // Paso02_CardScreen()
-                // Paso03_LazyColumnScreen()
-                 //Paso04ScaffoldScreen()
-                // Paso05NavBarScreen()
-                Paso06DialogosScreen()   // ← paso activo
+                // Paso01SumaScreen()
+                // Paso01CompraScreen()
+                // Paso02CardScreen()
+                // Paso03LazyColumnScreen()
+                // Paso04ScaffoldScreen()
+                Paso05NavBarScreen()
+                // Paso06_DialogosScreen()   // ← paso activo
             }
         }
     }

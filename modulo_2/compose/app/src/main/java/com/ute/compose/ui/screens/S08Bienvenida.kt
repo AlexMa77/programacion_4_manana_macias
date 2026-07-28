@@ -1,5 +1,6 @@
 package com.ute.compose.ui.screens
 
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -35,7 +36,6 @@ fun S08BienvenidaScreen() {
 @Composable
 private fun PasoUno(onSiguiente: () -> Unit) {
     var temaElegido by remember { mutableStateOf<String?>(null) }
-
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -223,6 +223,6 @@ private fun IndicadorPasos(pasoActual: Int, totalPasos: Int) {
 
 @Preview(showBackground = true)
 @Composable
-fun S08_Preview() {
+fun S08Preview() {
     MaterialTheme { S08BienvenidaScreen() }
 }

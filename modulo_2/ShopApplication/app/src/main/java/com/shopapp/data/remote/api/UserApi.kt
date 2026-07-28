@@ -2,6 +2,7 @@
 package com.shopapp.data.remote.api
 
 import com.shopapp.data.remote.dto.*
+import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -37,4 +38,22 @@ interface UserApi {
 
     @GET("users/stats/")
     suspend fun getStats(): Response<UserStatsDto>
+
+    @Multipart
+    @PATCH("users/profile/")
+    suspend fun uploadAvatar(
+        @Part avatar: MultipartBody.Part,
+    ): Response<UserDto>
+
+    // ── Notificaciones de staff ───────────────────────────────────────────────
+
+    /**
+     * Envía un correo personalizado o masivo.
+     * Requiere is_staff = true en el backend (IsAdminUser → 403 si no es staff).
+     * Backend: POST /api/emails/send/
+     */
+    @POST("emails/send/")
+    suspend fun sendNotification(
+        @Body body: SendNotificationDto,
+    ): Response<NotificationResultDto>
 }

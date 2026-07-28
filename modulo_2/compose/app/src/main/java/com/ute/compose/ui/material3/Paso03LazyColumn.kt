@@ -1,5 +1,6 @@
 package com.ute.compose.ui.material3
 
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -153,6 +154,6 @@ fun Paso03LazyColumnScreen() {
 
 @Preview(showBackground = true)
 @Composable
-fun Paso03_Preview() {
+fun Paso03Preview() {
     MaterialTheme { Paso03LazyColumnScreen() }
 }

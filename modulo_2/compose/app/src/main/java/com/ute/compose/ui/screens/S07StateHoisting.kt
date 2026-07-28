@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun S07stateHoistingScreen() {
+fun S07StateHoistingScreen() {
     Column(
         modifier            = Modifier.fillMaxSize().padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(20.dp)
@@ -152,6 +152,6 @@ private fun SelectorOpciones(
 
 @Preview(showBackground = true)
 @Composable
-fun S07_Preview() {
-    MaterialTheme { S07stateHoistingScreen() }
+fun S07Preview() {
+    MaterialTheme { S07StateHoistingScreen() }
 }
